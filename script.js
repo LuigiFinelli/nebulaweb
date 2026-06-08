@@ -122,26 +122,89 @@
   }
 
   /* --- Active Nav Link Highlight --- */
-  const sections = document.querySelectorAll('section[id]');
+  const navSectionLinks = Array.from(navLinks).filter(function (link) {
+    return !link.classList.contains('nav__link--cta');
+  });
 
-  const sectionObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(function (link) {
-            link.classList.remove('nav__link--active');
-            if (link.getAttribute('href') === '#' + id) {
-              link.classList.add('nav__link--active');
+  function setActiveNavLink(activeLink) {
+    navSectionLinks.forEach(function (link) {
+      link.classList.remove('nav__link--active');
+    });
+
+    if (activeLink) {
+      activeLink.classList.add('nav__link--active');
+    }
+  }
+
+  function getLinkSectionId(link) {
+    const href = link.getAttribute('href') || '';
+    const hashIndex = href.indexOf('#');
+    return hashIndex === -1 ? null : href.slice(hashIndex + 1);
+  }
+
+  const sectionNavMap = {};
+  let pricingNavLink = null;
+
+  navSectionLinks.forEach(function (link) {
+    const href = link.getAttribute('href') || '';
+
+    if (href.includes('pricing.html')) {
+      pricingNavLink = link;
+      return;
+    }
+
+    const sectionId = getLinkSectionId(link);
+    if (sectionId) {
+      sectionNavMap[sectionId] = link;
+    }
+  });
+
+  const isPricingPage = /pricing\.html$/i.test(window.location.pathname);
+
+  if (isPricingPage && pricingNavLink) {
+    setActiveNavLink(pricingNavLink);
+  } else {
+    const visibleSections = new Map();
+    const observedSectionIds = Object.keys(sectionNavMap);
+
+    if (observedSectionIds.length) {
+      const sectionObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            const id = entry.target.id;
+            if (entry.isIntersecting) {
+              visibleSections.set(id, entry.intersectionRatio);
+            } else {
+              visibleSections.delete(id);
             }
           });
+
+          let activeId = null;
+          let highestRatio = 0;
+
+          visibleSections.forEach(function (ratio, id) {
+            if (ratio > highestRatio) {
+              highestRatio = ratio;
+              activeId = id;
+            }
+          });
+
+          if (activeId && sectionNavMap[activeId]) {
+            setActiveNavLink(sectionNavMap[activeId]);
+          }
+        },
+        {
+          threshold: [0.15, 0.3, 0.5, 0.75],
+          rootMargin: '-' + getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim() + ' 0px -55% 0px'
+        }
+      );
+
+      observedSectionIds.forEach(function (id) {
+        const section = document.getElementById(id);
+        if (section) {
+          sectionObserver.observe(section);
         }
       });
-    },
-    { threshold: 0.3, rootMargin: '-' + getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim() + ' 0px -60% 0px' }
-  );
-
-  sections.forEach(function (section) {
-    sectionObserver.observe(section);
-  });
+    }
+  }
 })();

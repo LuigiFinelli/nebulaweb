@@ -1029,6 +1029,9 @@ h1, h2, h3 {
   font-weight: 600;
   color: var(--color-heading);
   margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .pricing-card__features {
@@ -1037,6 +1040,7 @@ h1, h2, h3 {
   gap: 0.625rem;
   margin-bottom: 1.25rem;
   flex: 1;
+  min-height: 280px;
 }
 
 .pricing-card__features li {
@@ -1076,6 +1080,8 @@ h1, h2, h3 {
 
 .pricing-card__note strong {
   color: var(--color-text);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .pricing-card .btn {
@@ -1425,7 +1431,7 @@ h1, h2, h3 {
     grid-column: auto;
     max-width: none;
     margin-inline: 0;
-    transform: scale(1.03);
+    transform: none;
   }
 
   .care-grid {
