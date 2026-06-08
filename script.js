@@ -11,6 +11,7 @@
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Open menu');
     navMenu.classList.remove('nav__menu--open');
+    header.classList.remove('header--menu-open');
     document.body.style.overflow = '';
   }
 
@@ -18,6 +19,7 @@
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.setAttribute('aria-label', 'Close menu');
     navMenu.classList.add('nav__menu--open');
+    header.classList.add('header--menu-open');
     document.body.style.overflow = 'hidden';
   }
 
@@ -34,6 +36,12 @@
     if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
       closeMenu();
       navToggle.focus();
+    }
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth >= 768 && navToggle.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
     }
   });
 
