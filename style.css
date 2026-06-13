@@ -728,6 +728,55 @@ h1, h2, h3 {
   color: var(--color-accent-l);
 }
 
+.social-links {
+  margin-top: 1.25rem;
+}
+
+.social-links__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-heading);
+  margin-bottom: 0.75rem;
+}
+
+.social-links__list {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.social-links__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-heading);
+  background: rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+  transition: color var(--transition), border-color var(--transition),
+              background-color var(--transition);
+}
+
+.social-links__link:hover {
+  color: var(--color-primary);
+  border-color: rgba(255, 77, 90, 0.35);
+  background: rgba(255, 77, 90, 0.08);
+}
+
+.social-links__link i {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.social-links--contact {
+  margin-top: 1.5rem;
+}
+
 .contact__form {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
