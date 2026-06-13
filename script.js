@@ -59,7 +59,7 @@
 
   /* --- Scroll Reveal --- */
   const revealElements = document.querySelectorAll(
-    '.service-card, .why-us__item, .testimonial-card, .why-us__card, .section__header, .pricing-card, .care-card, .addon-item, .bundle-card, .page-hero__content'
+    '.service-card, .why-us__item, .testimonial-card, .why-us__card, .section__header, .pricing-card, .care-card, .addon-item, .bundle-card, .page-hero__content, .portfolio-card'
   );
 
   revealElements.forEach(function (el) {
@@ -82,44 +82,6 @@
     el.style.transitionDelay = (i % 4) * 0.08 + 's';
     revealObserver.observe(el);
   });
-
-  /* --- Contact Form --- */
-  const contactForm = document.getElementById('contact-form');
-  const formFeedback = document.getElementById('form-feedback');
-
-  if (contactForm && formFeedback) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const name = contactForm.name.value.trim();
-      const email = contactForm.email.value.trim();
-      const service = contactForm.service.value;
-      const message = contactForm.message.value.trim();
-
-      formFeedback.className = 'form-feedback';
-
-      if (!name || !email || !service || !message) {
-        formFeedback.textContent = 'Please fill in all fields before submitting.';
-        formFeedback.classList.add('form-feedback--error');
-        return;
-      }
-
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        formFeedback.textContent = 'Please enter a valid email address.';
-        formFeedback.classList.add('form-feedback--error');
-        return;
-      }
-
-      formFeedback.textContent = 'Thank you! We\'ll be in touch within one business day.';
-      formFeedback.classList.add('form-feedback--success');
-      contactForm.reset();
-
-      setTimeout(function () {
-        formFeedback.textContent = '';
-        formFeedback.className = 'form-feedback';
-      }, 6000);
-    });
-  }
 
   /* --- Active Nav Link Highlight --- */
   const navSectionLinks = Array.from(navLinks).filter(function (link) {
@@ -144,12 +106,18 @@
 
   const sectionNavMap = {};
   let pricingNavLink = null;
+  let portfolioNavLink = null;
 
   navSectionLinks.forEach(function (link) {
     const href = link.getAttribute('href') || '';
 
     if (href.includes('pricing.html')) {
       pricingNavLink = link;
+      return;
+    }
+
+    if (href.includes('portfolio.html')) {
+      portfolioNavLink = link;
       return;
     }
 
@@ -160,9 +128,12 @@
   });
 
   const isPricingPage = /pricing\.html$/i.test(window.location.pathname);
+  const isPortfolioPage = /portfolio\.html$/i.test(window.location.pathname);
 
   if (isPricingPage && pricingNavLink) {
     setActiveNavLink(pricingNavLink);
+  } else if (isPortfolioPage && portfolioNavLink) {
+    setActiveNavLink(portfolioNavLink);
   } else {
     const visibleSections = new Map();
     const observedSectionIds = Object.keys(sectionNavMap);
