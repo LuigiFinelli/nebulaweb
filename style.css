@@ -940,6 +940,10 @@ h1, h2, h3 {
   text-align: center;
 }
 
+.footer__bottom p + p {
+  margin-top: 0.25rem;
+}
+
 /* --- Scroll Reveal --- */
 .reveal {
   opacity: 0;
@@ -987,6 +991,63 @@ h1, h2, h3 {
 
 .page-hero__content .btn {
   margin-top: 1.5rem;
+}
+
+/* --- Legal Pages --- */
+.legal-content__inner {
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.legal-content__meta {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.legal-content h2 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-content p {
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.legal-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--color-text-muted);
+}
+
+.legal-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.legal-content li:last-child {
+  margin-bottom: 0;
+}
+
+.legal-content a {
+  color: var(--color-accent-l);
+}
+
+.legal-content a:hover {
+  color: var(--color-accent);
+}
+
+.legal-content strong {
+  display: block;
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .questionnaire-reassurance {
@@ -1389,7 +1450,32 @@ h1, h2, h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   display: block;
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.portfolio-project__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(5, 5, 5, 0.35) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.portfolio-card:hover .portfolio-project__image img {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+.portfolio-card:hover .portfolio-project__image::after {
+  opacity: 1;
 }
 
 .portfolio-project__placeholder {
