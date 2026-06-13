@@ -13,12 +13,52 @@
     seo: ['SEO Optimisation', 'Multiple Services', 'Not Sure']
   };
 
+  var serviceFromParam = {
+    design: 'Website Design',
+    hosting: 'Website Hosting',
+    maintenance: 'Website Maintenance',
+    seo: 'SEO Optimisation',
+    multiple: 'Multiple Services',
+    'not-sure': 'Not Sure'
+  };
+
   var serviceSelect = document.getElementById('main-service');
   var guidanceNote = document.getElementById('questionnaire-guidance');
   var dynamicSections = document.querySelectorAll('[data-questionnaire-section]');
 
   if (!serviceSelect || !dynamicSections.length) {
     return;
+  }
+
+  var urlParams = new URLSearchParams(window.location.search);
+
+  /*
+   * Pre-fill contact details from sessionStorage (set by the contact form)
+   * or from URL query parameters when available.
+   *
+   * Example: start-project.html?service=design
+   */
+  function prefillField(fieldId, value) {
+    if (!value) {
+      return;
+    }
+
+    var field = document.getElementById(fieldId);
+
+    if (field && !field.value) {
+      field.value = value;
+    }
+  }
+
+  prefillField('full-name', urlParams.get('name') || sessionStorage.getItem('nebulaweb-contact-name'));
+  prefillField('email', urlParams.get('email') || sessionStorage.getItem('nebulaweb-contact-email'));
+  prefillField('business-name', urlParams.get('business') || sessionStorage.getItem('nebulaweb-contact-business'));
+  prefillField('phone', urlParams.get('phone') || sessionStorage.getItem('nebulaweb-contact-phone'));
+
+  var serviceParam = urlParams.get('service') || sessionStorage.getItem('nebulaweb-contact-service');
+
+  if (serviceParam && serviceFromParam[serviceParam]) {
+    serviceSelect.value = serviceFromParam[serviceParam];
   }
 
   // Mark the form as JS-enhanced so CSS can hide irrelevant sections.

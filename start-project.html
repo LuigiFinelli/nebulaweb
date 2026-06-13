@@ -57,8 +57,10 @@
       <div class="page-hero__bg" aria-hidden="true"></div>
       <div class="container page-hero__content">
         <p class="section__eyebrow">Client Onboarding</p>
-        <h1 class="page-hero__title">Start Your Project</h1>
-        <p class="page-hero__subtitle">Tell us a little more about what you need so we can provide clear advice and an accurate quote.</p>
+        <h1 class="page-hero__title">Tell Us More About Your Project</h1>
+        <p class="page-hero__subtitle">We&rsquo;ve received your initial enquiry. Completing this questionnaire helps us understand your requirements and provide a clearer, faster response.</p>
+        <p class="questionnaire-reassurance">This should only take a few minutes, and you can skip any questions you are unsure about.</p>
+        <a href="thank-you.html?later=true" class="btn btn--ghost questionnaire-complete-later">Complete This Later</a>
       </div>
     </section>
 
@@ -72,6 +74,12 @@
           Not sure what you need? Complete any sections that seem relevant — we&rsquo;ll review everything and advise you on the best approach.
         </p>
 
+        <!--
+          Automation (future):
+          - start-project submissions can trigger an automated summary email to the client
+            and a notification to NebulaWeb via Make, Zapier, n8n or similar.
+          - Connect to Netlify form webhooks or email notifications when ready.
+        -->
         <form
           class="questionnaire-form"
           id="start-project-form"
@@ -445,6 +453,7 @@
           </section>
 
           <button type="submit" class="btn btn--primary btn--full">Submit Project Details</button>
+          <a href="thank-you.html?later=true" class="questionnaire-complete-later questionnaire-complete-later--bottom">Complete This Later</a>
         </form>
       </div>
     </section>

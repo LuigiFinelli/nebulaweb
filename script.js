@@ -83,6 +83,61 @@
     revealObserver.observe(el);
   });
 
+  /* --- Contact Form: pass details to questionnaire via sessionStorage ---
+   *
+   * Netlify Forms uses a standard POST redirect, so query parameters cannot be
+   * appended reliably after submission. sessionStorage carries name, email,
+   * business and service to start-project.html for pre-filling.
+   *
+   * Automation (future): contact form submissions can trigger an email with the
+   * questionnaire link when a user chooses "Complete This Later" — via Make,
+   * Zapier, n8n or similar connected to Netlify form notifications.
+   */
+  var contactForm = document.getElementById('contact-form');
+
+  if (contactForm) {
+    var contactServiceSlugs = {
+      'Website Design': 'design',
+      'Website Hosting': 'hosting',
+      'Website Maintenance': 'maintenance',
+      'SEO Optimisation': 'seo',
+      'Multiple Services': 'multiple',
+      'Not Sure': 'not-sure'
+    };
+
+    contactForm.addEventListener('submit', function () {
+      var nameField = contactForm.querySelector('[name="name"]');
+      var emailField = contactForm.querySelector('[name="email"]');
+      var businessField = contactForm.querySelector('[name="business-name"]');
+      var phoneField = contactForm.querySelector('[name="phone"]');
+      var serviceField = contactForm.querySelector('[name="service"]');
+      var serviceValue = serviceField ? serviceField.value : '';
+      var serviceSlug = contactServiceSlugs[serviceValue] || '';
+
+      if (nameField && nameField.value) {
+        sessionStorage.setItem('nebulaweb-contact-name', nameField.value.trim());
+      }
+
+      if (emailField && emailField.value) {
+        sessionStorage.setItem('nebulaweb-contact-email', emailField.value.trim());
+      }
+
+      if (businessField && businessField.value) {
+        sessionStorage.setItem('nebulaweb-contact-business', businessField.value.trim());
+      }
+
+      if (phoneField && phoneField.value) {
+        sessionStorage.setItem('nebulaweb-contact-phone', phoneField.value.trim());
+      }
+
+      if (serviceSlug) {
+        sessionStorage.setItem('nebulaweb-contact-service', serviceSlug);
+      } else {
+        sessionStorage.removeItem('nebulaweb-contact-service');
+      }
+    });
+  }
+
   /* --- Active Nav Link Highlight --- */
   const navSectionLinks = Array.from(navLinks).filter(function (link) {
     return !link.classList.contains('nav__link--cta');

@@ -796,6 +796,60 @@ h1, h2, h3 {
   color: #f87171;
 }
 
+.form-follow-up-note {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* --- Thank You Follow-up --- */
+.thank-you-follow-up {
+  background: var(--color-bg-alt);
+  padding-top: 0;
+}
+
+.thank-you-card {
+  max-width: 640px;
+  margin-inline: auto;
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--shadow-md);
+}
+
+.thank-you-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 4vw, 1.75rem);
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 0.75rem;
+}
+
+.thank-you-card__text {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.thank-you-card__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .thank-you-card__actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
 /* --- Footer --- */
 .footer {
   background: var(--color-bg-alt);
@@ -920,6 +974,35 @@ h1, h2, h3 {
 
 .page-hero__content .btn {
   margin-top: 1.5rem;
+}
+
+.questionnaire-reassurance {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin-inline: auto;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.questionnaire-complete-later {
+  display: inline-flex;
+  margin-top: 1rem;
+}
+
+.questionnaire-complete-later--bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.questionnaire-complete-later--bottom:hover {
+  color: var(--color-heading);
 }
 
 /* --- Pricing --- */

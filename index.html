@@ -292,8 +292,14 @@
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/thank-you.html"
+          action="/start-project.html"
         >
+          <!--
+            Automation (future):
+            - Contact form submissions can trigger an email with the questionnaire link
+              if the user chooses "Complete This Later" on start-project.html.
+            - Connect via Make, Zapier, n8n or similar to Netlify form notifications.
+          -->
           <input type="hidden" name="form-name" value="contact">
 
           <p class="form-group form-group--honeypot" hidden>
@@ -343,6 +349,7 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
           </div>
+          <p class="form-follow-up-note">After submitting, you&rsquo;ll be taken to a short project questionnaire to help us understand your requirements. You can complete it now or return to it later.</p>
           <button type="submit" class="btn btn--primary btn--full">Send Message</button>
         </form>
       </div>
