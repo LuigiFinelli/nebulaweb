@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete the NebulaWeb project questionnaire to provide details about your website design, hosting, maintenance or SEO requirements.">
+  <title>Start Your Project | NebulaWeb</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512x512.png">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7PY0EXVFC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Z7PY0EXVFC');
+  </script>
+  <meta name="google-site-verification" content="tG1JjbxoIbm_YB-1inh_eYr94Ke8U_bTeLJ-6Kw5o_8" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo.png" alt="NebulaWeb" class="nav__logo-img" height="40">
+      </a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="index.html#services" class="nav__link">Services</a></li>
+        <li><a href="index.html#why-us" class="nav__link">Why Us</a></li>
+        <li><a href="index.html#testimonials" class="nav__link">Testimonials</a></li>
+        <li><a href="pricing.html" class="nav__link">Pricing</a></li>
+        <li><a href="portfolio.html" class="nav__link">Portfolio</a></li>
+        <li><a href="index.html#contact" class="nav__link nav__link--cta">Get in Touch</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero" id="start-project-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
+      <div class="container page-hero__content">
+        <p class="section__eyebrow">Client Onboarding</p>
+        <h1 class="page-hero__title">Start Your Project</h1>
+        <p class="page-hero__subtitle">Tell us a little more about what you need so we can provide clear advice and an accurate quote.</p>
+      </div>
+    </section>
+
+    <section class="section questionnaire-page" id="questionnaire">
+      <div class="container">
+        <div class="questionnaire-intro">
+          <p class="questionnaire-note">Only complete the sections relevant to your project. If you are unsure, choose &ldquo;Not Sure&rdquo; and we&rsquo;ll guide you.</p>
+        </div>
+
+        <p class="questionnaire-guidance" id="questionnaire-guidance" hidden>
+          Not sure what you need? Complete any sections that seem relevant — we&rsquo;ll review everything and advise you on the best approach.
+        </p>
+
+        <form
+          class="questionnaire-form"
+          id="start-project-form"
+          name="start-project"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/thank-you.html"
+        >
+          <input type="hidden" name="form-name" value="start-project">
+
+          <p class="form-group form-group--honeypot" hidden>
+            <label for="start-project-bot-field">Don&rsquo;t fill this out if you&rsquo;re human</label>
+            <input type="text" name="bot-field" id="start-project-bot-field" tabindex="-1" autocomplete="off">
+          </p>
+
+          <!-- Contact Details -->
+          <section class="questionnaire-section" aria-labelledby="contact-details-heading">
+            <h2 class="questionnaire-section__title" id="contact-details-heading">Contact Details</h2>
+
+            <div class="form-group">
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" name="full-name" placeholder="Jane Smith" required autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="business-name">Business Name <span class="form-group__optional">(optional)</span></label>
+              <input type="text" id="business-name" name="business-name" placeholder="Your business name" autocomplete="organization">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.co.uk" required autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="form-group__optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="07700 000000" autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+              <label for="existing-website-url">Existing Website URL <span class="form-group__optional">(optional)</span></label>
+              <input type="url" id="existing-website-url" name="existing-website-url" placeholder="https://www.example.co.uk" autocomplete="url">
+            </div>
+          </section>
+
+          <!-- Main Service -->
+          <section class="questionnaire-section" aria-labelledby="main-service-heading">
+            <h2 class="questionnaire-section__title" id="main-service-heading">Main Service Required</h2>
+
+            <div class="form-group">
+              <label for="main-service">Which service do you need most?</label>
+              <select id="main-service" name="main-service" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="Website Design">Website Design</option>
+                <option value="Website Hosting">Website Hosting</option>
+                <option value="Website Maintenance">Website Maintenance</option>
+                <option value="SEO Optimisation">SEO Optimisation</option>
+                <option value="Multiple Services">Multiple Services</option>
+                <option value="Not Sure">Not Sure</option>
+              </select>
+            </div>
+          </section>
+
+          <!-- Website Design -->
+          <section
+            class="questionnaire-section questionnaire-section--design"
+            data-questionnaire-section="design"
+            aria-labelledby="design-heading"
+          >
+            <h2 class="questionnaire-section__title" id="design-heading">Website Design</h2>
+
+            <fieldset class="form-fieldset">
+              <legend>Is this a new website or a redesign?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="design-type" value="New website"> New website</label>
+                <label class="form-option"><input type="radio" name="design-type" value="Redesign existing website"> Redesign existing website</label>
+                <label class="form-option"><input type="radio" name="design-type" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>What type of website do you need?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="website-type" value="Business website"> Business website</label>
+                <label class="form-option"><input type="radio" name="website-type" value="Portfolio website"> Portfolio website</label>
+                <label class="form-option"><input type="radio" name="website-type" value="Blog/content website"> Blog/content website</label>
+                <label class="form-option"><input type="radio" name="website-type" value="E-commerce website"> E-commerce website</label>
+                <label class="form-option"><input type="radio" name="website-type" value="Booking website"> Booking website</label>
+                <label class="form-option"><input type="radio" name="website-type" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>What pages do you think you need?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="Home"> Home</label>
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="About"> About</label>
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="Services"> Services</label>
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="Pricing"> Pricing</label>
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="Portfolio"> Portfolio</label>
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="Blog"> Blog</label>
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="Contact"> Contact</label>
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="FAQs"> FAQs</label>
+                <label class="form-option"><input type="checkbox" name="pages-needed" value="Other"> Other</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>Do you already have a logo or branding?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="branding-status" value="Yes"> Yes</label>
+                <label class="form-option"><input type="radio" name="branding-status" value="No"> No</label>
+                <label class="form-option"><input type="radio" name="branding-status" value="In progress"> In progress</label>
+                <label class="form-option"><input type="radio" name="branding-status" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="preferred-style">Preferred colours or style <span class="form-group__optional">(optional)</span></label>
+              <textarea id="preferred-style" name="preferred-style" rows="3" placeholder="e.g. clean and modern, dark theme, brand colours..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="example-websites">Example websites you like <span class="form-group__optional">(optional)</span></label>
+              <textarea id="example-websites" name="example-websites" rows="3" placeholder="Share links or describe websites whose style you admire"></textarea>
+            </div>
+
+            <fieldset class="form-fieldset">
+              <legend>Do you already have written content?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="content-status" value="Yes"> Yes</label>
+                <label class="form-option"><input type="radio" name="content-status" value="Some"> Some</label>
+                <label class="form-option"><input type="radio" name="content-status" value="No"> No</label>
+                <label class="form-option"><input type="radio" name="content-status" value="Need help"> Need help</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>Do you already have images/photos?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="images-status" value="Yes"> Yes</label>
+                <label class="form-option"><input type="radio" name="images-status" value="Some"> Some</label>
+                <label class="form-option"><input type="radio" name="images-status" value="No"> No</label>
+                <label class="form-option"><input type="radio" name="images-status" value="Need help"> Need help</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>Extra functionality needed</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="checkbox" name="extra-functionality" value="Contact form"> Contact form</label>
+                <label class="form-option"><input type="checkbox" name="extra-functionality" value="Booking system"> Booking system</label>
+                <label class="form-option"><input type="checkbox" name="extra-functionality" value="Online payments"> Online payments</label>
+                <label class="form-option"><input type="checkbox" name="extra-functionality" value="E-commerce"> E-commerce</label>
+                <label class="form-option"><input type="checkbox" name="extra-functionality" value="Live chat"> Live chat</label>
+                <label class="form-option"><input type="checkbox" name="extra-functionality" value="Newsletter signup"> Newsletter signup</label>
+                <label class="form-option"><input type="checkbox" name="extra-functionality" value="Client login area"> Client login area</label>
+                <label class="form-option"><input type="checkbox" name="extra-functionality" value="None / not sure"> None / not sure</label>
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- Hosting -->
+          <section
+            class="questionnaire-section questionnaire-section--hosting"
+            data-questionnaire-section="hosting"
+            aria-labelledby="hosting-heading"
+          >
+            <h2 class="questionnaire-section__title" id="hosting-heading">Website Hosting</h2>
+
+            <fieldset class="form-fieldset">
+              <legend>Do you already have a domain name?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="has-domain" value="Yes"> Yes</label>
+                <label class="form-option"><input type="radio" name="has-domain" value="No"> No</label>
+                <label class="form-option"><input type="radio" name="has-domain" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="domain-name">Domain name, if known <span class="form-group__optional">(optional)</span></label>
+              <input type="text" id="domain-name" name="domain-name" placeholder="www.yourbusiness.co.uk">
+            </div>
+
+            <div class="form-group">
+              <label for="current-hosting">Current hosting provider, if any <span class="form-group__optional">(optional)</span></label>
+              <input type="text" id="current-hosting" name="current-hosting" placeholder="e.g. GoDaddy, 123 Reg, Wix">
+            </div>
+
+            <fieldset class="form-fieldset">
+              <legend>Do you need help setting up business email?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="business-email-help" value="Yes"> Yes</label>
+                <label class="form-option"><input type="radio" name="business-email-help" value="No"> No</label>
+                <label class="form-option"><input type="radio" name="business-email-help" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="email-accounts">Approximate number of email accounts needed <span class="form-group__optional">(optional)</span></label>
+              <input type="text" id="email-accounts" name="email-accounts" placeholder="e.g. 3">
+            </div>
+
+            <fieldset class="form-fieldset">
+              <legend>Do you want NebulaWeb to manage hosting for you?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="managed-hosting" value="Yes"> Yes</label>
+                <label class="form-option"><input type="radio" name="managed-hosting" value="No"> No</label>
+                <label class="form-option"><input type="radio" name="managed-hosting" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- Maintenance -->
+          <section
+            class="questionnaire-section questionnaire-section--maintenance"
+            data-questionnaire-section="maintenance"
+            aria-labelledby="maintenance-heading"
+          >
+            <h2 class="questionnaire-section__title" id="maintenance-heading">Website Maintenance</h2>
+
+            <fieldset class="form-fieldset">
+              <legend>Website platform, if known</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="website-platform" value="WordPress"> WordPress</label>
+                <label class="form-option"><input type="radio" name="website-platform" value="Wix"> Wix</label>
+                <label class="form-option"><input type="radio" name="website-platform" value="Squarespace"> Squarespace</label>
+                <label class="form-option"><input type="radio" name="website-platform" value="Shopify"> Shopify</label>
+                <label class="form-option"><input type="radio" name="website-platform" value="Custom HTML/CSS"> Custom HTML/CSS</label>
+                <label class="form-option"><input type="radio" name="website-platform" value="Not sure"> Not sure</label>
+                <label class="form-option"><input type="radio" name="website-platform" value="Other"> Other</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>What maintenance do you need?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="checkbox" name="maintenance-needed" value="Text updates"> Text updates</label>
+                <label class="form-option"><input type="checkbox" name="maintenance-needed" value="Image updates"> Image updates</label>
+                <label class="form-option"><input type="checkbox" name="maintenance-needed" value="Security updates"> Security updates</label>
+                <label class="form-option"><input type="checkbox" name="maintenance-needed" value="Plugin/theme updates"> Plugin/theme updates</label>
+                <label class="form-option"><input type="checkbox" name="maintenance-needed" value="Bug fixes"> Bug fixes</label>
+                <label class="form-option"><input type="checkbox" name="maintenance-needed" value="Regular backups"> Regular backups</label>
+                <label class="form-option"><input type="checkbox" name="maintenance-needed" value="Performance improvements"> Performance improvements</label>
+                <label class="form-option"><input type="checkbox" name="maintenance-needed" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>How often do you expect to need updates?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="update-frequency" value="Weekly"> Weekly</label>
+                <label class="form-option"><input type="radio" name="update-frequency" value="Monthly"> Monthly</label>
+                <label class="form-option"><input type="radio" name="update-frequency" value="Occasionally"> Occasionally</label>
+                <label class="form-option"><input type="radio" name="update-frequency" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="current-issues">Describe any current website issues <span class="form-group__optional">(optional)</span></label>
+              <textarea id="current-issues" name="current-issues" rows="4" placeholder="Tell us about any problems, broken features or concerns with your current site"></textarea>
+            </div>
+          </section>
+
+          <!-- SEO -->
+          <section
+            class="questionnaire-section questionnaire-section--seo"
+            data-questionnaire-section="seo"
+            aria-labelledby="seo-heading"
+          >
+            <h2 class="questionnaire-section__title" id="seo-heading">SEO Optimisation</h2>
+
+            <div class="form-group">
+              <label for="business-location">Main business location <span class="form-group__optional">(optional)</span></label>
+              <input type="text" id="business-location" name="business-location" placeholder="e.g. Halifax, West Yorkshire">
+            </div>
+
+            <div class="form-group">
+              <label for="target-keywords">Main services or keywords you want to be found for <span class="form-group__optional">(optional)</span></label>
+              <textarea id="target-keywords" name="target-keywords" rows="3" placeholder="e.g. web design Halifax, plumber Leeds, accountant Yorkshire"></textarea>
+            </div>
+
+            <fieldset class="form-fieldset">
+              <legend>Do you have a Google Business Profile?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="google-business-profile" value="Yes"> Yes</label>
+                <label class="form-option"><input type="radio" name="google-business-profile" value="No"> No</label>
+                <label class="form-option"><input type="radio" name="google-business-profile" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>Have you done SEO before?</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="seo-before" value="Yes"> Yes</label>
+                <label class="form-option"><input type="radio" name="seo-before" value="No"> No</label>
+                <label class="form-option"><input type="radio" name="seo-before" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>Main SEO goal</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="seo-goal" value="More local enquiries"> More local enquiries</label>
+                <label class="form-option"><input type="radio" name="seo-goal" value="Improve Google rankings"> Improve Google rankings</label>
+                <label class="form-option"><input type="radio" name="seo-goal" value="Fix technical SEO issues"> Fix technical SEO issues</label>
+                <label class="form-option"><input type="radio" name="seo-goal" value="Optimise existing pages"> Optimise existing pages</label>
+                <label class="form-option"><input type="radio" name="seo-goal" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- Additional Services -->
+          <section class="questionnaire-section" aria-labelledby="additional-services-heading">
+            <h2 class="questionnaire-section__title" id="additional-services-heading">Additional Services You May Need</h2>
+            <p class="questionnaire-section__desc">Tick any other services you would like us to consider when reviewing your project.</p>
+
+            <fieldset class="form-fieldset">
+              <legend class="visually-hidden">Additional services</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="checkbox" name="additional-services" value="Website Hosting"> Website Hosting</label>
+                <label class="form-option"><input type="checkbox" name="additional-services" value="Website Maintenance"> Website Maintenance</label>
+                <label class="form-option"><input type="checkbox" name="additional-services" value="SEO Optimisation"> SEO Optimisation</label>
+                <label class="form-option"><input type="checkbox" name="additional-services" value="Website Redesign"> Website Redesign</label>
+                <label class="form-option"><input type="checkbox" name="additional-services" value="Business Email Setup"> Business Email Setup</label>
+                <label class="form-option"><input type="checkbox" name="additional-services" value="Google Business Profile Setup"> Google Business Profile Setup</label>
+                <label class="form-option"><input type="checkbox" name="additional-services" value="Automation / enquiry handling"> Automation / enquiry handling</label>
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- Budget and Timescale -->
+          <section class="questionnaire-section" aria-labelledby="budget-heading">
+            <h2 class="questionnaire-section__title" id="budget-heading">Budget and Timescale</h2>
+
+            <fieldset class="form-fieldset">
+              <legend>Approximate budget</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="approximate-budget" value="Under £500"> Under £500</label>
+                <label class="form-option"><input type="radio" name="approximate-budget" value="£500 - £1,000"> £500 - £1,000</label>
+                <label class="form-option"><input type="radio" name="approximate-budget" value="£1,000 - £2,500"> £1,000 - £2,500</label>
+                <label class="form-option"><input type="radio" name="approximate-budget" value="£2,500 - £5,000"> £2,500 - £5,000</label>
+                <label class="form-option"><input type="radio" name="approximate-budget" value="£5,000+"> £5,000+</label>
+                <label class="form-option"><input type="radio" name="approximate-budget" value="Not sure"> Not sure</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend>Ideal timescale</legend>
+              <div class="form-options">
+                <label class="form-option"><input type="radio" name="ideal-timescale" value="ASAP"> ASAP</label>
+                <label class="form-option"><input type="radio" name="ideal-timescale" value="Within 1 month"> Within 1 month</label>
+                <label class="form-option"><input type="radio" name="ideal-timescale" value="1-3 months"> 1-3 months</label>
+                <label class="form-option"><input type="radio" name="ideal-timescale" value="3+ months"> 3+ months</label>
+                <label class="form-option"><input type="radio" name="ideal-timescale" value="No fixed deadline"> No fixed deadline</label>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="additional-notes">Additional notes <span class="form-group__optional">(optional)</span></label>
+              <textarea id="additional-notes" name="additional-notes" rows="4" placeholder="Anything else you'd like us to know about your project"></textarea>
+            </div>
+          </section>
+
+          <!-- File Upload Notice -->
+          <section class="questionnaire-section" aria-labelledby="assets-heading">
+            <h2 class="questionnaire-section__title" id="assets-heading">Logos, Images and Documents</h2>
+            <p class="questionnaire-section__desc">If you already have a logo, brand guidelines, images or website content, we can provide a secure upload link after reviewing your enquiry.</p>
+            <p class="questionnaire-section__notice">Please do not send confidential passwords or login details through this form.</p>
+          </section>
+
+          <button type="submit" class="btn btn--primary btn--full">Submit Project Details</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="images/logo.png" alt="NebulaWeb" class="footer__logo-img">
+        </a>
+        <p class="footer__tagline">Website design, hosting, maintenance and SEO for UK businesses.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <div class="footer__col">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="index.html#services">Website Design</a></li>
+            <li><a href="index.html#services">Website Hosting</a></li>
+            <li><a href="index.html#services">Website Maintenance</a></li>
+            <li><a href="index.html#services">SEO Optimisation</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="index.html#why-us">About Us</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer__bottom container">
+      <p>&copy; 2026 NebulaWeb Ltd. All rights reserved. Registered in England &amp; Wales.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="start-project-questionnaire.js"></script>
+</body>
+</html>
