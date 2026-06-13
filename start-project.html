@@ -124,6 +124,21 @@
               <label for="existing-website-url">Existing Website URL <span class="form-group__optional">(optional)</span></label>
               <input type="url" id="existing-website-url" name="existing-website-url" placeholder="https://www.example.co.uk" autocomplete="url">
             </div>
+
+            <div class="form-group">
+              <label for="source">How did you hear about us? <span class="form-group__optional">(optional)</span></label>
+              <select id="source" name="source">
+                <option value="" selected>Select an option</option>
+                <option value="Google Search">Google Search</option>
+                <option value="Google Business Profile">Google Business Profile</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Recommendation">Recommendation</option>
+                <option value="Word of Mouth">Word of Mouth</option>
+                <option value="Existing Client">Existing Client</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
           </section>
 
           <!-- Main Service -->
@@ -446,10 +461,15 @@
           </section>
 
           <!-- File Upload Notice -->
+          <!--
+            File uploads will later be connected using Google Drive and an automation tool
+            such as Make, Tally, Google Forms or a custom backend.
+          -->
           <section class="questionnaire-section" aria-labelledby="assets-heading">
-            <h2 class="questionnaire-section__title" id="assets-heading">Logos, Images and Documents</h2>
-            <p class="questionnaire-section__desc">If you already have a logo, brand guidelines, images or website content, we can provide a secure upload link after reviewing your enquiry.</p>
-            <p class="questionnaire-section__notice">Please do not send confidential passwords or login details through this form.</p>
+            <h2 class="questionnaire-section__title" id="assets-heading">Project Files and Images</h2>
+            <p class="questionnaire-section__desc">If you already have a logo, brand guidelines, photos, website content or other project files, you&rsquo;ll be able to upload these securely after submitting your project details.</p>
+            <p class="questionnaire-section__notice">Please do not upload passwords or confidential login details.</p>
+            <button type="button" class="btn btn--ghost btn--full btn--disabled" disabled aria-disabled="true">Secure Upload Link Coming Soon</button>
           </section>
 
           <button type="submit" class="btn btn--primary btn--full">Submit Project Details</button>

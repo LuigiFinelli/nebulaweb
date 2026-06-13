@@ -183,6 +183,19 @@ h1, h2, h3 {
   width: 100%;
 }
 
+.btn--disabled,
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+.questionnaire-section .btn--disabled {
+  margin-top: 0.5rem;
+}
+
 /* --- Header / Nav --- */
 .header {
   position: fixed;
