@@ -1779,6 +1779,58 @@ h1, h2, h3 {
   color: var(--color-accent-l);
 }
 
+.blog-article__featured {
+  margin-bottom: 2rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.blog-article__featured img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.blog-related {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.blog-related__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.blog-related__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.blog-related__list a {
+  color: var(--color-accent-l);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.blog-related__list a:hover {
+  color: var(--color-accent);
+}
+
+.legal-content h3 {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
 /* --- Questionnaire --- */
 .questionnaire-page {
   background: var(--color-bg-alt);
