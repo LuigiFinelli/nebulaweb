@@ -59,7 +59,7 @@
 
   /* --- Scroll Reveal --- */
   const revealElements = document.querySelectorAll(
-    '.service-card, .why-us__item, .testimonial-card, .why-us__card, .section__header, .pricing-card, .care-card, .addon-item, .bundle-card, .page-hero__content, .portfolio-card'
+    '.service-card, .why-us__item, .testimonial-card, .why-us__card, .section__header, .pricing-card, .care-card, .addon-item, .bundle-card, .page-hero__content, .portfolio-card, .blog-card'
   );
 
   revealElements.forEach(function (el) {
