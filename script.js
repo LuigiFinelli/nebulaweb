@@ -1,6 +1,72 @@
 (function () {
   'use strict';
 
+  /* --- LocalBusiness Schema (pages without inline schema) --- */
+  function hasLocalBusinessSchema() {
+    var scripts = document.querySelectorAll('script[type="application/ld+json"]');
+
+    for (var i = 0; i < scripts.length; i++) {
+      try {
+        var data = JSON.parse(scripts[i].textContent);
+        var type = data['@type'];
+
+        if (type === 'LocalBusiness' || (Array.isArray(type) && type.indexOf('LocalBusiness') !== -1)) {
+          return true;
+        }
+      } catch (e) {
+        /* ignore invalid JSON */
+      }
+    }
+
+    return false;
+  }
+
+  if (!hasLocalBusinessSchema()) {
+    var localBusinessSchema = {
+      '@context': 'https://schema.org',
+      '@type': ['LocalBusiness', 'ProfessionalService'],
+      '@id': 'https://nebulaweb.co.uk/#localbusiness',
+      name: 'NebulaWeb',
+      description: 'NebulaWeb designs, builds and maintains professional websites for UK businesses, including website design, hosting, maintenance and SEO optimisation.',
+      url: 'https://nebulaweb.co.uk',
+      email: 'hello@nebulaweb.co.uk',
+      telephone: '+447710638248',
+      image: 'https://nebulaweb.co.uk/images/logo.png',
+      logo: 'https://nebulaweb.co.uk/images/logo.png',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Halifax',
+        addressRegion: 'West Yorkshire',
+        addressCountry: 'GB'
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'United Kingdom'
+      },
+      sameAs: [
+        'https://www.facebook.com/NebulaWeb',
+        'https://www.instagram.com/nebulawebuk/',
+        'https://www.linkedin.com/company/nebulawebuk/'
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+447710638248',
+        email: 'hello@nebulaweb.co.uk',
+        contactType: 'customer service',
+        areaServed: {
+          '@type': 'Country',
+          name: 'United Kingdom'
+        },
+        availableLanguage: 'en-GB'
+      }
+    };
+
+    var schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.textContent = JSON.stringify(localBusinessSchema);
+    document.head.appendChild(schemaScript);
+  }
+
   /* --- Mobile Navigation --- */
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
@@ -59,7 +125,7 @@
 
   /* --- Scroll Reveal --- */
   const revealElements = document.querySelectorAll(
-    '.service-card, .why-us__item, .testimonial-card, .why-us__card, .section__header, .pricing-card, .care-card, .addon-item, .bundle-card, .page-hero__content, .portfolio-card, .blog-card'
+    '.service-card, .why-us__item, .testimonial-card, .why-us__card, .section__header, .pricing-card, .care-card, .addon-item, .bundle-card, .page-hero__content, .portfolio-card, .blog-card, .about__highlight, .how-it-works__step, .faq-item, .portfolio-coming-soon__inner, .case-study'
   );
 
   revealElements.forEach(function (el) {
