@@ -125,8 +125,186 @@
     }
   }
   </script>
+
+  <style>
+    body.splash-active,
+    body:has(#splash:not(.splash--dismissed):not(.splash--removed)) {
+      overflow: hidden;
+    }
+
+    .splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0f;
+      opacity: 1;
+      transition: opacity 0.55s ease;
+    }
+
+    .splash.splash--dismissed {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .splash.splash--removed {
+      display: none;
+    }
+
+    .splash__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    .splash__logo-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min(320px, 78vw);
+      height: min(320px, 78vw);
+    }
+
+    .splash__glow {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 20, 20, 0.45) 0%, rgba(200, 20, 20, 0.12) 45%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .splash__ring {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border: 2px solid rgba(200, 20, 20, 0.55);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: splash-pulse 2.4s ease-out infinite;
+    }
+
+    .splash__ring--2 {
+      animation-delay: 1.2s;
+    }
+
+    .splash__logo-float {
+      position: relative;
+      z-index: 2;
+      animation: splash-float 4.2s ease-in-out 0.95s infinite;
+    }
+
+    .splash__logo {
+      display: block;
+      width: min(280px, 68vw);
+      height: auto;
+      animation: splash-scale-in 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .splash__tagline {
+      margin: 1.75rem 0 0;
+      max-width: 22rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      line-height: 1.6;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      animation: splash-tagline-in 0.75s ease 0.65s forwards;
+    }
+
+    .splash__skip {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      z-index: 10000;
+      padding: 0.5rem 0.75rem;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.45);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .splash__skip:hover,
+    .splash__skip:focus-visible {
+      color: #fff;
+      outline: none;
+    }
+
+    @keyframes splash-scale-in {
+      0% {
+        transform: scale(0.72);
+        filter: brightness(2.2);
+      }
+      45% {
+        filter: brightness(1.35);
+      }
+      100% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+    }
+
+    @keyframes splash-float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes splash-pulse {
+      0% {
+        transform: scale(0.75);
+        opacity: 0.75;
+      }
+      100% {
+        transform: scale(2.6);
+        opacity: 0;
+      }
+    }
+
+    @keyframes splash-tagline-in {
+      to {
+        opacity: 0.82;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .splash {
+        display: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
+
+  <div id="splash" class="splash" role="dialog" aria-label="Welcome to NebulaWeb" aria-modal="true">
+    <div class="splash__content">
+      <div class="splash__logo-wrap">
+        <div class="splash__glow" aria-hidden="true"></div>
+        <span class="splash__ring splash__ring--1" aria-hidden="true"></span>
+        <span class="splash__ring splash__ring--2" aria-hidden="true"></span>
+        <div class="splash__logo-float">
+          <img src="images/logo.png" alt="NebulaWeb" class="splash__logo" width="280">
+        </div>
+      </div>
+      <p class="splash__tagline">Build beautiful websites. Automate everything else.</p>
+    </div>
+    <button type="button" class="splash__skip" id="splash-skip">Skip ›</button>
+  </div>
 
   <!-- Navigation -->
   <header class="header" id="header">
@@ -365,64 +543,12 @@
       <div class="container">
         <div class="section__header">
           <p class="section__eyebrow">Testimonials</p>
-          <h2 class="section__title">What our clients say</h2>
-          <p class="section__desc">Feedback from small businesses we've worked with on their websites.</p>
+          <h2 class="section__title">We&rsquo;re looking for our first clients</h2>
+          <p class="section__desc">NebulaWeb is a new business, and we&rsquo;re actively building our client portfolio from the ground up. Work with us and you can expect direct, personal service, transparent pricing and a professional website built with real care.</p>
         </div>
 
-        <div class="testimonials__grid">
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-            </div>
-            <p class="testimonial-card__text">&ldquo;Our new website looks much more professional and works properly on mobile. Communication was straightforward throughout, and we knew exactly what was happening at each stage.&rdquo;</p>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar">JD</div>
-              <div>
-                <cite class="testimonial-card__name">James D.</cite>
-                <span class="testimonial-card__role">Plumbing Business Owner, Halifax</span>
-              </div>
-            </footer>
-          </blockquote>
-
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-            </div>
-            <p class="testimonial-card__text">&ldquo;I needed a clean, simple site to explain what we do and make it easy for people to get in touch. The result looks professional and I&rsquo;m much happier sending clients to it.&rdquo;</p>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar">SM</div>
-              <div>
-                <cite class="testimonial-card__name">Sarah M.</cite>
-                <span class="testimonial-card__role">Property Services Director, Leeds</span>
-              </div>
-            </footer>
-          </blockquote>
-
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-              <span class="testimonial-card__star" aria-hidden="true">★</span>
-            </div>
-            <p class="testimonial-card__text">&ldquo;We finally have a website that reflects our business properly. It loads quickly, looks good on phones and makes it easy for customers to contact us.&rdquo;</p>
-            <footer class="testimonial-card__author">
-              <div class="testimonial-card__avatar">MR</div>
-              <div>
-                <cite class="testimonial-card__name">Michael R.</cite>
-                <span class="testimonial-card__role">Trades Business Owner, Bradford</span>
-              </div>
-            </footer>
-          </blockquote>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary">Be One of Our First Clients</a>
         </div>
       </div>
     </section>
@@ -661,6 +787,51 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var SPLASH_KEY = 'nebulaweb-splash-seen';
+      var AUTO_DISMISS_MS = 3500;
+      var FADE_MS = 550;
+
+      var splash = document.getElementById('splash');
+      var skipBtn = document.getElementById('splash-skip');
+      if (!splash) return;
+
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var alreadySeen = sessionStorage.getItem(SPLASH_KEY) === '1';
+
+      if (prefersReducedMotion || alreadySeen) {
+        splash.remove();
+        return;
+      }
+
+      document.body.classList.add('splash-active');
+      sessionStorage.setItem(SPLASH_KEY, '1');
+
+      var dismissed = false;
+      var autoTimer;
+
+      function dismissSplash() {
+        if (dismissed) return;
+        dismissed = true;
+
+        if (autoTimer) {
+          clearTimeout(autoTimer);
+        }
+
+        splash.classList.add('splash--dismissed');
+        document.body.classList.remove('splash-active');
+
+        window.setTimeout(function () {
+          splash.classList.add('splash--removed');
+          splash.remove();
+        }, FADE_MS);
+      }
+
+      skipBtn.addEventListener('click', dismissSplash);
+      autoTimer = window.setTimeout(dismissSplash, AUTO_DISMISS_MS);
+    })();
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
