@@ -80,7 +80,10 @@
   <header class="header" id="header">
     <nav class="nav container" aria-label="Main navigation">
       <a href="../index.html" class="nav__logo">
-        <img src="../images/logo.png" alt="NebulaWeb" class="nav__logo-img" height="40">
+        <picture>
+        <source srcset="../images/logo.webp" type="image/webp">
+        <img src="../images/logo.png" alt="NebulaWeb" class="nav__logo-img" width="1058" height="508">
+      </picture>
       </a>
 
       <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
@@ -118,14 +121,17 @@
         <time class="blog-article__meta" datetime="2026-06-10">Published 10 June 2026</time>
 
         <figure class="blog-article__featured">
-          <img
-            src="../images/assets/blog/website-redesign-signs.jpg"
-            alt="Person browsing a modern responsive website on a smartphone"
-            width="1200"
-            height="675"
-            loading="eager"
-            decoding="async"
-          >
+          <picture>
+            <source srcset="../images/assets/blog/website-redesign-signs.webp" type="image/webp">
+            <img
+              src="../images/assets/blog/website-redesign-signs.jpg"
+              alt="Person browsing a modern responsive website on a smartphone"
+              width="1200"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
         </figure>
 
         <p>Most business owners don&rsquo;t realise their website is losing them customers until they look at the data.</p>
@@ -195,7 +201,10 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         <a href="../index.html" class="footer__logo">
-          <img src="../images/logo.png" alt="NebulaWeb" class="footer__logo-img">
+          <picture>
+          <source srcset="../images/logo.webp" type="image/webp">
+          <img src="../images/logo.png" alt="NebulaWeb" class="footer__logo-img" width="1058" height="508" loading="lazy" decoding="async">
+        </picture>
         </a>
         <p class="footer__tagline">Website design, hosting, maintenance and SEO for UK businesses.</p>
 

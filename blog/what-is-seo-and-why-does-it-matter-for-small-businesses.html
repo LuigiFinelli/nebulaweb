@@ -80,7 +80,10 @@
   <header class="header" id="header">
     <nav class="nav container" aria-label="Main navigation">
       <a href="../index.html" class="nav__logo">
-        <img src="../images/logo.png" alt="NebulaWeb" class="nav__logo-img" height="40">
+        <picture>
+        <source srcset="../images/logo.webp" type="image/webp">
+        <img src="../images/logo.png" alt="NebulaWeb" class="nav__logo-img" width="1058" height="508">
+      </picture>
       </a>
 
       <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
@@ -118,14 +121,17 @@
         <time class="blog-article__meta" datetime="2026-06-12">Published 12 June 2026</time>
 
         <figure class="blog-article__featured">
-          <img
-            src="../images/assets/blog/seo-small-business.jpg"
-            alt="Website analytics dashboard showing search traffic and performance data"
-            width="1200"
-            height="675"
-            loading="eager"
-            decoding="async"
-          >
+          <picture>
+            <source srcset="../images/assets/blog/seo-small-business.webp" type="image/webp">
+            <img
+              src="../images/assets/blog/seo-small-business.jpg"
+              alt="Website analytics dashboard showing search traffic and performance data"
+              width="1200"
+              height="855"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
         </figure>
 
         <p>A potential customer searches Google for exactly the service you offer. If your website doesn&rsquo;t appear, a competitor&rsquo;s probably does.</p>
@@ -218,7 +224,10 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         <a href="../index.html" class="footer__logo">
-          <img src="../images/logo.png" alt="NebulaWeb" class="footer__logo-img">
+          <picture>
+          <source srcset="../images/logo.webp" type="image/webp">
+          <img src="../images/logo.png" alt="NebulaWeb" class="footer__logo-img" width="1058" height="508" loading="lazy" decoding="async">
+        </picture>
         </a>
         <p class="footer__tagline">Website design, hosting, maintenance and SEO for UK businesses.</p>
 
