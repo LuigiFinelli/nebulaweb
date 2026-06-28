@@ -100,4 +100,23 @@
 
   serviceSelect.addEventListener('change', updateQuestionnaireSections);
   updateQuestionnaireSections();
+
+  var startProjectForm = document.getElementById('start-project-form');
+
+  if (startProjectForm) {
+    startProjectForm.addEventListener('submit', function () {
+      var privacyConsentField = startProjectForm.querySelector('#privacy-consent');
+      var marketingConsentField = startProjectForm.querySelector('#marketing-consent');
+      var privacyConsentValue = startProjectForm.querySelector('[name="privacy_consent"]');
+      var marketingConsentValue = startProjectForm.querySelector('[name="marketing_consent"]');
+
+      if (privacyConsentValue) {
+        privacyConsentValue.value = privacyConsentField && privacyConsentField.checked ? 'true' : 'false';
+      }
+
+      if (marketingConsentValue) {
+        marketingConsentValue.value = marketingConsentField && marketingConsentField.checked ? 'true' : 'false';
+      }
+    });
+  }
 })();

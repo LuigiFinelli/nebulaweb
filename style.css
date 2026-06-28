@@ -1002,6 +1002,66 @@ h1, h2, h3 {
   min-height: 120px;
 }
 
+.consent-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.consent-checkboxes label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.consent-checkboxes label[for="privacy-consent"] a {
+  white-space: nowrap;
+}
+
+.consent-checkboxes input[type="checkbox"] {
+  width: auto;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.consent-checkboxes a {
+  color: var(--color-primary-l);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consent-checkboxes a:hover {
+  color: var(--color-accent-l);
+}
+
+.form-field-error {
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  color: #e05a5a;
+}
+
+.contact__form.was-validated .form-group input:invalid,
+.contact__form.was-validated .form-group textarea:invalid,
+.contact__form.was-validated .form-group select:invalid,
+.questionnaire-form.was-validated .form-group input:invalid,
+.questionnaire-form.was-validated .form-group textarea:invalid,
+.questionnaire-form.was-validated .form-group select:invalid,
+.contact__form .form-group input:user-invalid,
+.contact__form .form-group textarea:user-invalid,
+.contact__form .form-group select:user-invalid,
+.questionnaire-form .form-group input:user-invalid,
+.questionnaire-form .form-group textarea:user-invalid,
+.questionnaire-form .form-group select:user-invalid {
+  border-color: #e05a5a;
+}
+
 .form-feedback {
   margin-top: 0.75rem;
   font-size: 0.875rem;

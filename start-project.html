@@ -140,7 +140,7 @@
 
             <div class="form-group">
               <label for="phone">Phone Number <span class="form-group__optional">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="07700 000000" autocomplete="tel">
+              <input type="tel" id="phone" name="phone" placeholder="07700 000000" autocomplete="tel" pattern="^(\+44\s?|0)[0-9]{2,4}(\s?[0-9]{3,4}){1,2}$" title="Please enter a valid UK phone number (e.g. 07700 000000 or 01422 123456)">
             </div>
 
             <div class="form-group">
@@ -457,12 +457,11 @@
             <fieldset class="form-fieldset">
               <legend>Approximate budget</legend>
               <div class="form-options">
-                <label class="form-option"><input type="radio" name="approximate-budget" value="Under £500"> Under £500</label>
                 <label class="form-option"><input type="radio" name="approximate-budget" value="£500 - £1,000"> £500 - £1,000</label>
                 <label class="form-option"><input type="radio" name="approximate-budget" value="£1,000 - £2,500"> £1,000 - £2,500</label>
                 <label class="form-option"><input type="radio" name="approximate-budget" value="£2,500 - £5,000"> £2,500 - £5,000</label>
                 <label class="form-option"><input type="radio" name="approximate-budget" value="£5,000+"> £5,000+</label>
-                <label class="form-option"><input type="radio" name="approximate-budget" value="Not sure"> Not sure</label>
+                <label class="form-option"><input type="radio" name="approximate-budget" value="Not sure"> Not sure / To be discussed</label>
               </div>
             </fieldset>
 
@@ -494,6 +493,19 @@
             <p class="questionnaire-section__notice">Please do not upload passwords or confidential login details.</p>
             <button type="button" class="btn btn--ghost btn--full btn--disabled" disabled aria-disabled="true">Secure Upload Link Coming Soon</button>
           </section>
+
+          <div class="consent-checkboxes">
+            <label for="privacy-consent">
+              <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+              I agree to the <a href="/privacy-policy" target="_blank" style="white-space:nowrap;">Privacy Policy</a> and <a href="/terms-of-service" target="_blank" style="white-space:nowrap;">Terms of Service</a>. *
+            </label>
+            <label for="marketing-consent">
+              <input type="checkbox" id="marketing-consent" name="marketing-consent">
+              I&rsquo;d like to receive occasional tips, updates and news from NebulaWeb. You can unsubscribe at any time.
+            </label>
+            <input type="hidden" name="privacy_consent" id="privacy-consent-value" value="false">
+            <input type="hidden" name="marketing_consent" id="marketing-consent-value" value="false">
+          </div>
 
           <button type="submit" class="btn btn--primary btn--full">Submit Project Details</button>
           <a href="thank-you.html?later=true" class="questionnaire-complete-later questionnaire-complete-later--bottom">Complete This Later</a>

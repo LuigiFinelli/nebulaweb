@@ -149,6 +149,58 @@
     revealObserver.observe(el);
   });
 
+  /* --- UK Phone Validation --- */
+  var UK_PHONE_PATTERN = /^(\+44\s?|0)[0-9]{2,4}(\s?[0-9]{3,4}){1,2}$/;
+  var UK_PHONE_ERROR = 'Please enter a valid UK mobile or landline number.';
+
+  function initUkPhoneValidation(phoneInput) {
+    if (!phoneInput || phoneInput.dataset.ukPhoneValidationInit === 'true') {
+      return;
+    }
+
+    phoneInput.dataset.ukPhoneValidationInit = 'true';
+
+    var errorEl = document.createElement('p');
+    errorEl.className = 'form-field-error';
+    errorEl.hidden = true;
+    errorEl.textContent = UK_PHONE_ERROR;
+    phoneInput.insertAdjacentElement('afterend', errorEl);
+
+    phoneInput.addEventListener('blur', function () {
+      var value = phoneInput.value.trim();
+
+      if (!value) {
+        phoneInput.setCustomValidity('');
+        errorEl.hidden = true;
+        return;
+      }
+
+      if (!UK_PHONE_PATTERN.test(value)) {
+        phoneInput.setCustomValidity(UK_PHONE_ERROR);
+        errorEl.hidden = false;
+      } else {
+        phoneInput.setCustomValidity('');
+        errorEl.hidden = true;
+      }
+    });
+  }
+
+  function initFormValidationStyles(form) {
+    if (!form || form.dataset.validationStylesInit === 'true') {
+      return;
+    }
+
+    form.dataset.validationStylesInit = 'true';
+
+    form.addEventListener('invalid', function () {
+      form.classList.add('was-validated');
+    }, true);
+  }
+
+  initUkPhoneValidation(document.getElementById('phone'));
+  initFormValidationStyles(document.getElementById('contact-form'));
+  initFormValidationStyles(document.getElementById('start-project-form'));
+
   /* --- Contact Form: pass details to questionnaire via sessionStorage ---
    *
    * Netlify Forms uses a standard POST redirect, so query parameters cannot be
@@ -177,8 +229,20 @@
       var businessField = contactForm.querySelector('[name="business-name"]');
       var phoneField = contactForm.querySelector('[name="phone"]');
       var serviceField = contactForm.querySelector('[name="service"]');
+      var privacyConsentField = contactForm.querySelector('#privacy-consent');
+      var marketingConsentField = contactForm.querySelector('#marketing-consent');
+      var privacyConsentValue = contactForm.querySelector('[name="privacy_consent"]');
+      var marketingConsentValue = contactForm.querySelector('[name="marketing_consent"]');
       var serviceValue = serviceField ? serviceField.value : '';
       var serviceSlug = contactServiceSlugs[serviceValue] || '';
+
+      if (privacyConsentValue) {
+        privacyConsentValue.value = privacyConsentField && privacyConsentField.checked ? 'true' : 'false';
+      }
+
+      if (marketingConsentValue) {
+        marketingConsentValue.value = marketingConsentField && marketingConsentField.checked ? 'true' : 'false';
+      }
 
       if (nameField && nameField.value) {
         sessionStorage.setItem('nebulaweb-contact-name', nameField.value.trim());
